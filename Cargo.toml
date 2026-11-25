@@ -6,6 +6,7 @@ rust-version = "1.88"
 license = "MIT OR Apache-2.0"
 description = "Read DiskCopy 4.2 floppy disk images."
 repository = "https://github.com/05Narwhal/atlas-dc42"
+homepage = "https://julianloy.com"
 readme = "README.md"
 keywords = ["diskcopy", "dc42", "floppy", "macos", "parser"]
 categories = ["filesystem", "parser-implementations"]
