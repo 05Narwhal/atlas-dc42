@@ -11,7 +11,7 @@ Opens DiskCopy 4.2 images (an 84-byte big-endian header, the disk data, optional
 
 ```toml
 [dependencies]
-atlas-dc42 = "0.1"
+atlas-dc42 = "26.0.1-a"
 ```
 
 Minimum supported Rust version: 1.88.
