@@ -2,10 +2,44 @@
 
 [![crates.io](https://img.shields.io/crates/v/atlas-dc42.svg)](https://crates.io/crates/atlas-dc42) [![docs.rs](https://img.shields.io/docsrs/atlas-dc42)](https://docs.rs/atlas-dc42) [![CI](https://github.com/05Narwhal/atlas-dc42/actions/workflows/ci.yml/badge.svg)](https://github.com/05Narwhal/atlas-dc42/actions/workflows/ci.yml) ![License](https://img.shields.io/crates/l/atlas-dc42.svg)
 
-Opens DiskCopy 4.2 images (an 84-byte big-endian header, the disk data, optional tag bytes) as a `BlockSource` and computes the format's checksum.
+**Open DiskCopy 4.2 floppy images as a plain `BlockSource`.**
 
-- The header is validated against the file size before the data slice is exposed.
-- No `unsafe`. Every length, offset and count read from the disk is checked; damage is an error, not a panic.
+DiskCopy 4.2 is the floppy image format of classic Mac OS: an 84-byte big-endian header, the disk's data, then optional tag bytes. `atlas-dc42` opens one and exposes the disk data, ready for `atlas-hfs` or `atlas-fat`.
+
+## Features
+
+- The header is validated against the file size before the data is exposed.
+- Optional **tag bytes** are ignored.
+- The data checksum is **not verified at open**, so a damaged floppy image still opens. `checksum` computes it for tools that want to report it.
+
+## Quick start
+
+```rust,no_run
+use std::path::Path;
+
+use atlas_fs_core::io::block::BlockSource;
+
+let disk = atlas_dc42::open(Path::new("floppy.dc42"))?;
+println!("{} bytes of disk", disk.len());
+```
+
+## API
+
+- `open(path)` opens a file; `open_source(source)` opens any `BlockSource`.
+- `Header` is the parsed 84-byte header.
+- `checksum` computes the format's data checksum.
+
+## Safety and robustness
+
+- **No `unsafe`.** The crate is `#![forbid(unsafe_code)]`.
+- **On-disk bytes are hostile.** Every length, offset and count read from a disk is validated before use. Damage is returned as an error, never a panic, an unchecked index or an unbounded loop.
+- **Lints enforce it.** Clippy's `indexing_slicing`, `arithmetic_side_effects`, `unwrap_used`, `expect_used` and `panic` lints are on for the library code.
+- **Read-only.** Nothing in this crate writes to a disk or image.
+- **Fuzzed.** A `cargo-fuzz` target in `fuzz/` runs the parser on arbitrary bytes.
+
+## Feature flags
+
+- `test-util`: exposes the synthetic test image builders and fuzz seed inputs this crate's own tests use, for tests of crates built on it. It is not part of the stable API.
 
 ## Install
 
@@ -14,7 +48,9 @@ Opens DiskCopy 4.2 images (an 84-byte big-endian header, the disk data, optional
 atlas-dc42 = "26.0.1-a"
 ```
 
-Minimum supported Rust version: 1.88.
+Versions follow `26.MAJOR.MINOR-STAGE`: the year, the major and minor version, and a stage letter (`a` alpha, `b` beta, `s` stable). Cargo treats a stage suffix as a pre-release, so name the version exactly as above.
+
+Minimum supported Rust version: 1.88 (edition 2024).
 
 ## Licence
 
