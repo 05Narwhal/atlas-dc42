@@ -1,6 +1,6 @@
 # atlas-dc42
 
-<!-- badges -->[![crates.io](https://img.shields.io/crates/v/atlas-dc42.svg)](https://crates.io/crates/atlas-dc42) [![docs.rs](https://img.shields.io/docsrs/atlas-dc42)](https://docs.rs/atlas-dc42) [![CI](https://github.com/05Narwhal/atlas-dc42/actions/workflows/ci.yml/badge.svg)](https://github.com/05Narwhal/atlas-dc42/actions/workflows/ci.yml) ![License](https://img.shields.io/crates/l/atlas-dc42.svg)
+[![crates.io](https://img.shields.io/crates/v/atlas-dc42.svg)](https://crates.io/crates/atlas-dc42) [![docs.rs](https://img.shields.io/docsrs/atlas-dc42)](https://docs.rs/atlas-dc42) [![CI](https://github.com/05Narwhal/atlas-dc42/actions/workflows/ci.yml/badge.svg)](https://github.com/05Narwhal/atlas-dc42/actions/workflows/ci.yml) ![License](https://img.shields.io/crates/l/atlas-dc42.svg)
 
 Opens DiskCopy 4.2 images (an 84-byte big-endian header, the disk data, optional tag bytes) as a `BlockSource` and computes the format's checksum.
 
