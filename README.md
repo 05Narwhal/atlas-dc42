@@ -1,6 +1,6 @@
 # atlas-dc42
 
-[![crates.io](https://img.shields.io/crates/v/atlas-dc42.svg)](https://crates.io/crates/atlas-dc42) [![docs.rs](https://img.shields.io/docsrs/atlas-dc42)](https://docs.rs/atlas-dc42) [![CI](https://github.com/05Narwhal/atlas-dc42/actions/workflows/ci.yml/badge.svg)](https://github.com/05Narwhal/atlas-dc42/actions/workflows/ci.yml) ![License](https://img.shields.io/crates/l/atlas-dc42.svg)
+[![crates.io](https://img.shields.io/crates/v/atlas-dc42.svg)](https://crates.io/crates/atlas-dc42) [![docs](https://img.shields.io/badge/docs-disk--atlas.julianloy.com-blue)](https://disk-atlas.julianloy.com/docs) [![CI](https://github.com/05Narwhal/atlas-dc42/actions/workflows/ci.yml/badge.svg)](https://github.com/05Narwhal/atlas-dc42/actions/workflows/ci.yml) ![License](https://img.shields.io/crates/l/atlas-dc42.svg)
 
 **Open DiskCopy 4.2 floppy images as a plain `BlockSource`.**
 
@@ -45,12 +45,16 @@ println!("{} bytes of disk", disk.len());
 
 ```toml
 [dependencies]
-atlas-dc42 = "26.0.1-a"
+atlas-dc42 = "26.0.2-a"
 ```
 
 Versions follow `26.MAJOR.MINOR-STAGE`: the year, the major and minor version, and a stage letter (`a` alpha, `b` beta, `s` stable). Cargo treats a stage suffix as a pre-release, so name the version exactly as above.
 
 Minimum supported Rust version: 1.88 (edition 2024).
+
+## Documentation
+
+Guides and reference live at [disk-atlas.julianloy.com/docs](https://disk-atlas.julianloy.com/docs).
 
 ## Licence
 
@@ -85,4 +89,4 @@ Licensed under either of Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-A
 | [`atlas-luks`](https://github.com/05Narwhal/atlas-luks) | Read LUKS1 and LUKS2 encrypted volumes: keyslot unlock with PBKDF2 or Argon2, AES-XTS and AES-CBC sector decryption |
 | [`atlas-bitlocker`](https://github.com/05Narwhal/atlas-bitlocker) | Read BitLocker encrypted volumes: FVE metadata, password and recovery-password unlock, AES-XTS and AES-CBC sector decryption |
 
-Made by Julian A. Loy · [julianloy.com](https://julianloy.com)
+Made by Julian A. Loy · [julianloy.com](https://julianloy.com) · [Documentation](https://disk-atlas.julianloy.com/docs)
